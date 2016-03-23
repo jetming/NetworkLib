@@ -1,0 +1,61 @@
+用例：register  remove  waiteevents
+
+
+Register
+Brief:客户端注册，register()
+
+Actors:
+
+System:
+
+precondition:
+
+postcondition:
+
+level:
+
+target:
+
+main scenario:
+1、填充evenhandler(或者准备一个eventhandler类)
+2、以evenhandler为参数调用reactor类的register()函数
+3、reactor调用eventhandler的gethandler()函数，获得文件描述符
+4、填充epoll_event结构，调用epoll_ctl()注册事件
+
+extensions:
+
+other requirments:
+
+
+
+
+Waitevents
+Brief:等待事件发生
+
+Actors:
+
+System:
+
+precondition:
+
+postcondition:
+
+level:
+
+target:
+
+main scenario:
+1、application调用reactor的waitevent()函数
+2、reactor调用epoll_wait()等待事件发生
+3、当有事件发生时，从阻塞态返回
+4、填充eventhandler数组
+5、调用handleevent()函数，reactor处理event
+
+extensions:
+
+other requirments:
+
+
+对象之间的关系
+
+	关联（） 泛化（继承实现） 包容（容器实现）
