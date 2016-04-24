@@ -1,16 +1,20 @@
 CC=g++
 CFLAG=-g -Wno-deprecated #屏蔽警告信息
 PROGARMNAME=mylibtest
-LIB=/root/mylib/SocketPackage
-LIB2=/root/mylib/EpollReactor
+LIB=/home/root/mylib/SocketPackage
+LIB2=/home/root/mylib/EpollReactor
 
-all:tcpSockTest tcpSockEpollTest
+all:tcpSockServerTest tcpSockCliTest tcpSockEpollTest
 
-tcpSockTest:tcpSockTest.cpp
-	$(CC) $(CFLAG) tcpSockTest.cpp -I $(LIB)
-	mv ./a.out ./tcpSockTest
-	mv ./tcpSockTest ./build
+tcpSockServerTest:tcpSockServerTest.cpp
+	$(CC) $(CFLAG) tcpSockServerTest.cpp -I $(LIB)
+	mv ./a.out ./tcpSockServerTest
+	mv ./tcpSockServerTest ./build
 
+tcpSockCliTest:tcpSockCliTest.cpp
+	$(CC) $(CFLAG) tcpSockCliTest.cpp -I $(LIB)
+	mv ./a.out ./tcpSockClient
+	mv ./tcpSockClient ./build
 tcpSockEpollTest:tcpSockEpollTest.cpp
 	$(CC) $(CFLAG) tcpSockEpollTest.cpp -I $(LIB)
 	mv ./a.out ./tcpSockEpollTest

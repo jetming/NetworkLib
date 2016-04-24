@@ -5,7 +5,6 @@
 int main()
 {
     struct sockaddr_in cliaddr;
-    char buf[MAXLEN];
     socklen_t clilen;
     struct rio_t* rio;
 
@@ -21,7 +20,14 @@ int main()
     rio->rio_fd=connfd;
     rio->rio_cnt=0;
 
-    int n=tss->tcpread(rio,buf,MAXLEN);
-    printf("read_back:%d\t%s\n",n,buf);
-    tss->tcpwrite(connfd,buf,n);
+    while(1)
+    {
+        char buf[MAXLEN];
+        int n=tss->tcpread(rio,buf,MAXLEN);
+        if(n!=0)
+        {   printf("server read:%d\t%s\n",n,buf);
+            tss->tcpwrite(connfd,buf,n);
+        }else
+            break;
+    }
 }
