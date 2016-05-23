@@ -1,3 +1,6 @@
+#ifndef TCPSOCKET_H
+#define TCPSOCKET_H
+
 #include "socket.hpp"
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -83,3 +86,5 @@ class tcpsocket : public Socket
             return 0;
 		}
 };
+
+#endif

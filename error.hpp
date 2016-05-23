@@ -1,3 +1,6 @@
+#ifndef ERROR_H
+#define ERROR_H
+
 #include <iostream>
 #include <stdarg.h>
 #include <string.h>
@@ -63,3 +66,5 @@ class error
     private:
         int daemon_proc;
 };
+
+#endif
